@@ -10,4 +10,15 @@ As this demo project is a monorepo, we will only run the pipelines when terrafor
 **In a real production scenario, you want to have the infrastructure code in a separate repository!**
 
 Follow the guide https://learn.hashicorp.com/tutorials/terraform/github-actions?in=terraform/automation.
-Note: This part is not required. You can provision your infrastructure via TFC only, but this enables you to handle everything with pull requests and that you can get feedback of the `terraform plan` inside Github
+
+When creating Terraform Cloud workspace, make sure to select **API-driven workflow**. We will run `terraform` commands by using Github actions, but the real `terraform plan` and `terraform apply` are running on Terraform Cloud because we use Terraform Cloud as the backend. 
+
+The benefit of this approach is that we get information about the changes (output of `terraform plan`) inside PR, so we can do everything on PR, without the need to switch to Terraform Cloud Web UI.
+
+## Links
+Infra:
+- https://app.terraform.io/app 
+- https://www.civo.com/
+
+Guides:
+- https://learn.hashicorp.com/tutorials/terraform/github-actions?in=terraform/automation
