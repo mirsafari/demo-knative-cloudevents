@@ -8,3 +8,6 @@ Set `CIVO_TOKEN` in enviroment variable so you can authorize Terraform Cloud on 
 As this demo project is a monorepo, we will only run the pipelines when terraform/* directory changes. 
 
 **In a real production scenario, you want to have the infrastructure code in a separate repository!**
+
+Follow the guide https://learn.hashicorp.com/tutorials/terraform/github-actions?in=terraform/automation.
+Note: This part is not required. You can provision your infrastructure via TFC only, but this enables you to handle everything with pull requests and that you can get feedback of the `terraform plan` inside Github
