@@ -1,16 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: knative-operator
+  name: infrastructure-apps
 spec:
   destination:
     name: ''
     namespace: infrastructure-dependencies
     server: 'https://kubernetes.default.svc'
   source:
-    path: argo-configuration/infra-apps
+    path: argo-config/infra-apps
     repoURL: 'https://github.com/mirsafari/demo-knative-cloudevents'
     targetRevision: HEAD
   project: infrastructure
   syncPolicy:
-    automated: null
+    automated:
+      prune: true
+      selfHeal: true
