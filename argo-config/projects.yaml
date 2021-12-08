@@ -8,6 +8,8 @@ spec:
   destinations:
   - namespace: infrastructure-dependencies
     server: '*'
+  sourceRepos:
+  - https://github.com/mirsafari/demo-knative-cloudevents
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
@@ -19,3 +21,5 @@ spec:
   destinations:
   - namespace: app
     server: '*'
+  sourceRepos:
+  - https://github.com/mirsafari/demo-knative-cloudevents
