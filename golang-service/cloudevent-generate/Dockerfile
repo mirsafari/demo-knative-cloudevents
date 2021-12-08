@@ -14,7 +14,7 @@ RUN GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o /go/bin/cloudevent-gene
 FROM alpine:3.14
 ## Copy binary from Stage 1
 COPY --from=builder /go/bin/cloudevent-generate /go/bin/cloudevent-generate
-## Prepare for rootless mode
+## Add user for rootless container
 ARG USER=non-root
 RUN addgroup -S $USER && \
     adduser -S $USER -G $USER && \
