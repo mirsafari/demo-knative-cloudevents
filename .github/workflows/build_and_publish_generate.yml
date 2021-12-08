@@ -28,8 +28,8 @@ jobs:
       id: docker_build
       uses: docker/build-push-action@v2
       with:
-        context: ./
-        file: ./Dockerfile
+        context: ./golang-service/cloudevent-generate/
+        file: ../golang-service/cloudevent-generate/Dockerfile
         push: true
         tags: msafaric/demo-knative-cloudevents-generate:${{ github.sha }}
 
