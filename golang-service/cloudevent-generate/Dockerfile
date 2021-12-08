@@ -7,7 +7,6 @@ WORKDIR /go/src/app
 COPY . .
 
 ## Add flags to remove debug information, compile only for linux target and disable cross compilation.
-RUN ls -lah; ls -lah /go/src/app
 RUN GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o /go/bin/cloudevent-generate
 
 # Stage 2 - Copy binary and prepare executable
