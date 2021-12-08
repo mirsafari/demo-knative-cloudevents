@@ -27,5 +27,5 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: knative-operator
-    namespace: default
+    namespace: infrastructure-dependencies
 

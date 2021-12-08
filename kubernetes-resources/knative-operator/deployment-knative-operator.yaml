@@ -16,7 +16,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: knative-operator
-  namespace: default
+  namespace: infrastructure-dependencies
   labels:
     operator.knative.dev/release: "v20211208-6d0ea120"
     app.kubernetes.io/name: knative-operator

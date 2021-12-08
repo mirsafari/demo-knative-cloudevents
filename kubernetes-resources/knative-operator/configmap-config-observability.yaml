@@ -16,7 +16,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: config-observability
-  namespace: default
+  namespace: infrastructure-dependencies
   labels:
     operator.knative.dev/release: "v20211208-6d0ea120"
     app.kubernetes.io/version: "20211208-6d0ea120"

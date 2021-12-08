@@ -10,6 +10,12 @@ spec:
     server: '*'
   sourceRepos:
   - https://github.com/mirsafari/demo-knative-cloudevents
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
