@@ -12,4 +12,6 @@ provider "civo" {
   region = "LON1"
 }
 
-variable "CIVO_TOKEN" {}
+variable "CIVO_TOKEN" {
+  type = string
+}
