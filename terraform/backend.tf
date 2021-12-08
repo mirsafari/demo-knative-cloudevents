@@ -3,7 +3,7 @@ terraform {
     organization = "msafaric-demo"
 
     workspaces {
-      name = "demo-knative-cloudevents-civo"
+      name = "civo-k8s-demo"
     }
   }
 }
