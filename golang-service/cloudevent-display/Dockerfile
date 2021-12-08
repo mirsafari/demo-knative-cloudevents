@@ -17,7 +17,7 @@ COPY --from=builder /go/bin/cloudevent-display /go/bin/cloudevent-display
 ARG USER=non-root
 RUN addgroup -S $USER && \
     adduser -S $USER -G $USER && \
-    chown $USER:$USER /go/bin/cloudevent-generate
+    chown $USER:$USER /go/bin/cloudevent-display
 USER $USER
 ## Run the binary
 ENTRYPOINT ["/go/bin/cloudevent-display"]
