@@ -12,7 +12,7 @@ spec:
     path: argo-config/argo-apps/infra-apps
     repoURL: 'https://github.com/mirsafari/demo-knative-cloudevents'
     targetRevision: HEAD
-  project: infrastructure
+  project: default
   syncPolicy:
     automated:
       prune: true
