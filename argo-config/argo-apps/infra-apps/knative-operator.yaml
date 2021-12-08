@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: knative-operator
-  namespace: argocd
+  namespace: infrastructure-dependencies
 spec:
   destination:
     name: ''
