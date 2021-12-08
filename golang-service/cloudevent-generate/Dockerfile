@@ -6,8 +6,9 @@ RUN apk update && apk add --no-cache git
 WORKDIR /go/src/app
 COPY . .
 
+RUN go get -d -v ./...
 ## Add flags to remove debug information, compile only for linux target and disable cross compilation.
-RUN GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o /go/bin/cloudevent-generate
+RUN GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags="-w -s" -o /go/bin/cloudevent-generate
 
 # Stage 2 - Copy binary and prepare executable
 FROM alpine:3.14
