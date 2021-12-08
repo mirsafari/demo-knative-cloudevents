@@ -1,7 +1,7 @@
 # Stage 1 - Build binary
 FROM golang:1.16 AS builder
 
-RUN apk update && apk add --no-cache git
+RUN apt update && apt install git
 
 WORKDIR /go/src/app
 COPY . .
