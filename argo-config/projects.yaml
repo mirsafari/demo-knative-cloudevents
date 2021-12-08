@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: infrastructure
+  namespace: argocd
+spec:
+  description: Project holding infrastructure resrouces
+  destinations:
+  - namespace: infrastructure-dependencies
+    server: '*'
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: application
+  namespace: argocd
+spec:
+  description: Project holding application resrouces
+  destinations:
+  - namespace: app
+    server: '*'
