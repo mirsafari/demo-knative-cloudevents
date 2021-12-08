@@ -19,7 +19,7 @@ func main() {
 	repository := "prometheus/prometheus"
 	provider := "github.com"
 	// cloudEventEndpoitService = "http://localhost:8080/"
-	// Read ENV variable
+	// Read ENV variable for target
 	cloudEventEndpoitService = os.Getenv("CLOUDEVENT_DESTINATION")
 
 	err := getReleases(provider, repository)
