@@ -8,7 +8,7 @@ terraform {
 
 # Configure the Civo Provider
 provider "civo" {
-  token = var.CIVO_TOKEN
+  token  = var.CIVO_TOKEN
   region = "LON1"
 }
 
