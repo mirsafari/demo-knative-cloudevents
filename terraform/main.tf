@@ -30,7 +30,7 @@ resource "civo_firewall_rule" "kube-api" {
 # Create a cluster
 resource "civo_kubernetes_cluster" "knative-eventing-cluster" {
   name              = "knative-eventing-cluster"
-  num_target_nodes  = 1
+  num_target_nodes  = 2
   target_nodes_size = element(data.civo_instances_size.xsmall.sizes, 0).name
   firewall_id       = civo_firewall.kubernetes-cluster.id
 }
