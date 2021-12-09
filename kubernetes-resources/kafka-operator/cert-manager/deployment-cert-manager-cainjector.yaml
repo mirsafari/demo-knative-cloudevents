@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cert-manager-cainjector
-  namespace: "cert-manager"
+  namespace: "infrastructure-dependencies"
   labels:
     app: cainjector
     app.kubernetes.io/name: cainjector

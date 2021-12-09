@@ -15,6 +15,6 @@ roleRef:
   name: cert-manager-controller-clusterissuers
 subjects:
   - name: cert-manager
-    namespace: "cert-manager"
+    namespace: "infrastructure-dependencies"
     kind: ServiceAccount
 

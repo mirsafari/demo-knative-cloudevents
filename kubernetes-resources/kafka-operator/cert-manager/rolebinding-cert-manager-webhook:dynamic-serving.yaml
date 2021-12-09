@@ -3,7 +3,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: cert-manager-webhook:dynamic-serving
-  namespace: "cert-manager"
+  namespace: "infrastructure-dependencies"
   labels:
     app: webhook
     app.kubernetes.io/name: webhook
@@ -18,5 +18,5 @@ subjects:
 - apiGroup: ""
   kind: ServiceAccount
   name: cert-manager-webhook
-  namespace: cert-manager
+  namespace: infrastructure-dependencies
 

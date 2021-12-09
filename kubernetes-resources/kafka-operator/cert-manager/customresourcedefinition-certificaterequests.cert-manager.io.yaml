@@ -41,7 +41,7 @@ spec:
         #
         service:
           name: 'cert-manager-webhook'
-          namespace: "cert-manager"
+          namespace: "infrastructure-dependencies"
           path: /convert
           #
   versions:

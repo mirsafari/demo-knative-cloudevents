@@ -15,6 +15,6 @@ roleRef:
   name: cert-manager-cainjector
 subjects:
   - name: cert-manager-cainjector
-    namespace: "cert-manager"
+    namespace: "infrastructure-dependencies"
     kind: ServiceAccount
 

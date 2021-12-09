@@ -20,5 +20,5 @@ subjects:
   - apiGroup: ""
     kind: ServiceAccount
     name: cert-manager
-    namespace: cert-manager
+    namespace: infrastructure-dependencies
 
