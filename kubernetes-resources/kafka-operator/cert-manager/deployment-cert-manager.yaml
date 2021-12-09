@@ -40,7 +40,7 @@ spec:
           args:
           - --v=2
           - --cluster-resource-namespace=$(POD_NAMESPACE)
-          - --leader-election-namespace=kube-system
+          - --leader-election-namespace=infrastructure-dependencies
           ports:
           - containerPort: 9402
             protocol: TCP
