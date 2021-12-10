@@ -9,11 +9,9 @@ spec:
     namespace: infrastructure-dependencies
     server: 'https://kubernetes.default.svc'
   source:
-    path: kubernetes-resources/kafka
+    path: kubernetes-resources/kafka/kafka-operator
     repoURL: 'https://github.com/mirsafari/demo-knative-cloudevents'
     targetRevision: HEAD
-    directory:
-      recurse: true
   project: infrastructure
   syncPolicy:
     automated: null
