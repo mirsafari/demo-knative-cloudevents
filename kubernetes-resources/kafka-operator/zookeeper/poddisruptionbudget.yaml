@@ -1,0 +1,14 @@
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: zookeeper
+  labels:
+    app: zookeeper
+    component: zookeeper-cluster
+    group: kafka-k8s
+spec:
+  selector:
+    matchLabels:
+      app: zookeeper
+      component: zookeeper-cluster
+  maxUnavailable: 1
