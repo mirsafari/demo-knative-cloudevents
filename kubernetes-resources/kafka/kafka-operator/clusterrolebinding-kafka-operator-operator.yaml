@@ -1,0 +1,15 @@
+# Source: kafka-operator/templates/operator-rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: kafka-operator-operator
+  labels:
+    app.kubernetes.io/name: kafka-operator
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kafka-operator-operator
+subjects:
+- kind: ServiceAccount
+  name: kafka-operator
+  namespace: infrastructure-dependencies

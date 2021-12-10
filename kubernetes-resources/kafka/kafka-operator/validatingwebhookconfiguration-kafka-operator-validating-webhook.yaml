@@ -1,0 +1,31 @@
+# Source: kafka-operator/templates/operator-deployment-with-webhook.yaml
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  labels:
+    app.kubernetes.io/name: kafka-operator
+    app.kubernetes.io/component: webhook
+  name: kafka-operator-validating-webhook
+webhooks:
+- admissionReviewVersions:
+  - v1beta1
+  clientConfig:
+    caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKRENDQWd5Z0F3SUJBZ0lSQUtwcGo4TnVxKzJPS1crOVVzK1g2dGN3RFFZSktvWklodmNOQVFFTEJRQXcKSERFYU1CZ0dBMVVFQXhNUmEyRm1hMkV0YjNCbGNtRjBiM0l0WTJFd0hoY05NakV4TWpFd01UUXhNVEl5V2hjTgpNekV4TWpBNE1UUXhNVEl5V2pBY01Sb3dHQVlEVlFRREV4RnJZV1pyWVMxdmNHVnlZWFJ2Y2kxallUQ0NBU0l3CkRRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFQTzhLR2V0bFJacTVobnFURnNOTDdWaVVwLy8KMHdlSk8vKzBrQ3ZsMTNZSXpENjZqRFlZeVVVcEd5SDgySytyQjlKQWV3eVY3TGdrV3g5cjVDV3RpZXAxNXB6RgpvTHNuY3N0VGdDQ29jc29qOVhtbnpVdG9pdlBCeUNlNTd3dGNXWlVRZVIyTjRzeGNUTlRnR0k2UVQ0RTk0Q0gxCjc3R3BVZU9zdnBIU0xNTUtwT3hyQjRuQjdQYzZtLzR1cml2SitEMkNWWjZqS0kyOFB1YmZ4ZzlkRU1XeXdUaWgKdXZEOEl3cmVpWVhlcFBhSjFzZS9vY0lSNkhBZzQ2SVMvSlpIdUJHUlVuNG9FdUM3SVJVUitvb2J0VVRUMjJDegpiVGNUK3JNT0JYeVhwenJpNEdzRXVoL0ltRHdnRDM3NE9vU2V6RzBvMnM1TUxhdTRHNEFmVDdTOGlwa0NBd0VBCkFhTmhNRjh3RGdZRFZSMFBBUUgvQkFRREFnS2tNQjBHQTFVZEpRUVdNQlFHQ0NzR0FRVUZCd01CQmdnckJnRUYKQlFjREFqQVBCZ05WSFJNQkFmOEVCVEFEQVFIL01CMEdBMVVkRGdRV0JCUUg1NnZkS0dEN3RpT0wrdmpBNzlIRgo1ZXE2UURBTkJna3Foa2lHOXcwQkFRc0ZBQU9DQVFFQTRxYjFqNHZQNm5KM05RUkpiaVVjbDdzTUQxeXRPcHFMCnFPd1dpZllSYzFuMTZzcll4Mis5MVI0VjYwbG5XT3pNY0dpaTRCRHlwMnFVeU1HUkF4bEViKzdHRDhXMWhCOGUKbjVXYnNybEtibEljZGNrS2xOWWlCckJaQUwzd3BUeGowcGxtL2FLcEd1TERZNlMveUVmRnpCekJ5WWNVVDdKQgpNSGJUVkdxa1JnTHRYSzN4Zkh0S3cvRTk1cFcxbEdGMTVtbVJwVE1rOE85VDUvVnI0SXZFWWtXQWxSWFo3YmZuCnlHVi9qcHowZDlkSGRzbnFaaXQ4UDZVWVZFNStMWGgrQ0YyUTBNbVZOQlNPR3c2MTRFbFdrakFIblFNbkRDMUIKYzFnUEFVOXluekxNM2RWTnNUdWJYd2VSdlJ6cUhzSHRqdkFqSitpbWFObEt4K0JhQzFKNWdnPT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+    service:
+      name: "kafka-operator-operator"
+      namespace: infrastructure-dependencies
+      path: /validate
+  failurePolicy: Fail
+  name: kafkatopics.kafka.banzaicloud.io
+  rules:
+  - apiGroups:
+    - kafka.banzaicloud.io
+    apiVersions:
+    - v1alpha1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - kafkatopics
+  sideEffects: None
+

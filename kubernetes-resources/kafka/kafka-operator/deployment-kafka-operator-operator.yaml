@@ -1,0 +1,79 @@
+# Source: kafka-operator/templates/operator-deployment-with-webhook.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "kafka-operator"
+  labels:
+    control-plane: controller-manager
+    app.kubernetes.io/name: kafka-operator
+    app.kubernetes.io/component: operator
+spec:
+  selector:
+    matchLabels:
+    control-plane: controller-manager
+    app.kubernetes.io/name: kafka-operator
+    app.kubernetes.io/component: operator
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        checksum/config: d281d16e2295b24c8d57cafaaabe9dae4631aa2702749ec079186a10c41eb311
+      labels:
+        app.kubernetes.io/name: kafka-operator
+        app.kubernetes.io/component: operator
+    spec:
+      serviceAccountName: kafka-operator
+      volumes:
+        - name: serving-cert
+          secret:
+            secretName: kafka-operator-serving-cert
+      containers:
+        - name: kube-rbac-proxy
+          image: "gcr.io/kubebuilder/kube-rbac-proxy:v0.8.0"
+          imagePullPolicy: IfNotPresent
+          args:
+            - "--secure-listen-address=0.0.0.0:8443"
+            - "--upstream=http://127.0.0.1:8080/"
+            - "--logtostderr=true"
+            - "--v=10"
+          ports:
+            - containerPort: 8443
+              name: https
+        - command:
+            - /manager
+          args:
+            - --enable-leader-election
+            - --cert-manager-namespace=infrastructure-dependencies
+            - --cert-manager-enabled=false
+          image: "ghcr.io/banzaicloud/kafka-operator:v0.20.0"
+          imagePullPolicy: IfNotPresent
+          name: manager
+          env:
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          ports:
+            - containerPort: 443
+              name: webhook-server
+              protocol: TCP
+            - containerPort: 8080
+              name: metrics
+              protocol: TCP
+            - containerPort: 9001
+              name: alerts
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /etc/webhook/certs
+              name: serving-cert
+              readOnly: true
+          resources:
+
+            limits:
+              cpu: 200m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+      terminationGracePeriodSeconds: 10
+

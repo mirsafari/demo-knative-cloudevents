@@ -1,0 +1,17 @@
+# Source: kafka-operator/templates/operator-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: "RELEASE-NAME-kafka-operator-operator"
+  namespace: "miro-test"
+  labels:
+    app.kubernetes.io/name: kafka-operator
+    app.kubernetes.io/component: operator
+spec:
+  selector:
+    app.kubernetes.io/name: kafka-operator
+    app.kubernetes.io/component: operator
+  ports:
+  - name: https
+    port: 443
+

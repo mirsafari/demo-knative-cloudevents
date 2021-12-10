@@ -1,0 +1,21 @@
+# Source: kafka-operator/templates/authproxy-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-operator-authproxy
+  annotations:
+    prometheus.io/port: "8443"
+    prometheus.io/scheme: https
+    prometheus.io/scrape: "true"
+  labels:
+    app.kubernetes.io/name: kafka-operator
+    app.kubernetes.io/component: authproxy
+spec:
+  ports:
+  - name: https
+    port: 8443
+    targetPort: https
+  selector:
+    control-plane: controller-manager
+    app.kubernetes.io/component: authproxy
+
