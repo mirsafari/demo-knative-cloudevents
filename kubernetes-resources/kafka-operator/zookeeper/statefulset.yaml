@@ -82,16 +82,16 @@ spec:
           - name: election
             containerPort: 3888
         livenessProbe:
-          exec:
-            command: ['/bin/bash', '-c', 'echo "ruok" | timeout 2 nc -w 2 localhost 2181 | grep imok']
+          tcpSocket:
+            port: client
           initialDelaySeconds: 30
           periodSeconds: 10
           timeoutSeconds: 5
           successThreshold: 1
           failureThreshold: 6
         readinessProbe:
-          exec:
-            command: ['/bin/bash', '-c', 'echo "ruok" | timeout 2 nc -w 2 localhost 2181 | grep imok']
+          tcpSocket:
+            port: client
           initialDelaySeconds: 5
           periodSeconds: 10
           timeoutSeconds: 5
