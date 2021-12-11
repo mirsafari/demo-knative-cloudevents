@@ -10,17 +10,16 @@ metadata:
 spec:
   selector:
     matchLabels:
-    control-plane: controller-manager
-    app.kubernetes.io/name: kafka-operator
-    app.kubernetes.io/component: operator
+      control-plane: controller-manager
+      app.kubernetes.io/name: kafka-operator
+      app.kubernetes.io/component: operator
   replicas: 1
   template:
     metadata:
-      annotations:
-        checksum/config: d281d16e2295b24c8d57cafaaabe9dae4631aa2702749ec079186a10c41eb311
       labels:
         app.kubernetes.io/name: kafka-operator
         app.kubernetes.io/component: operator
+        control-plane: controller-manager
     spec:
       serviceAccountName: kafka-operator
       volumes:
