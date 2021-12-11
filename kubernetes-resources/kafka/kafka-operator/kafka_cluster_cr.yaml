@@ -2,7 +2,7 @@ apiVersion: kafka.banzaicloud.io/v1beta1
 kind: KafkaCluster
 metadata:
   labels:
-    controller-tools.k8s.io: "1.0"
+    controller-tools.k8s.io: "1.0"  
   name: kafka
 spec:
   monitoringConfig:
