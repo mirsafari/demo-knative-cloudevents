@@ -23,7 +23,6 @@ spec:
     targetPort: election
   selector:
     app: zookeeper
-    component: zookeeper-cluster
 ---
 apiVersion: v1
 kind: Service
@@ -47,4 +46,3 @@ spec:
     targetPort: election
   selector:
     app: zookeeper
-    component: zookeeper-cluster
