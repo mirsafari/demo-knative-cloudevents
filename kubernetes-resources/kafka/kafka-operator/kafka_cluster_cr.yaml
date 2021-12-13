@@ -18,12 +18,19 @@ spec:
     cruise.control.metrics.topic.auto.create=true
     cruise.control.metrics.topic.num.partitions=1
     cruise.control.metrics.topic.replication.factor=2
-  brokerConfigGroups:
+  brokerConfigGroups: 
     default:
       # podSecurityContext:
       #  runAsNonRoot: false
       # securityContext:
       #  privileged: true
+      resourceRequirements: 
+        requests: 
+          cpu: 0.2
+          memory": 200Mi
+        limits: 
+          cpu: 0.2
+          memory": 300Mi
       storageConfigs:
         - mountPath: "/kafka-logs"
           pvcSpec:
