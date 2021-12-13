@@ -26,11 +26,11 @@ spec:
       #  privileged: true
       resourceRequirements: 
         requests: 
-          cpu: 0.2
-          memory": 200Mi
+          cpu: "200m"
+          memory": "200Mi"
         limits: 
-          cpu: 0.2
-          memory": 300Mi
+          cpu: "500m"
+          memory": "400Mi"
       storageConfigs:
         - mountPath: "/kafka-logs"
           pvcSpec:
