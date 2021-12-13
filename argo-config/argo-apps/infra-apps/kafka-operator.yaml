@@ -17,3 +17,6 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    # Needed because of metadata.annotations: Too long: must have at most 262144 bytes
+    syncOptions:
+    - Replace=true
